@@ -12,7 +12,7 @@ public aspect Control {
 	//Insertar un elemento en una posicion
 	void around(NumerosEnteros ne, int num, int pos):
 		call (void NumerosEnteros.establecerPos(int, int)) && args(num, pos) && target(ne) {
-			if (pos < ne.longitud()) {
+			if ( 0 <= pos && pos < ne.longitud()) {
 				proceed(ne, num, pos);
 				System.out.println("Aspecto: La posicion es valida");
 			}
